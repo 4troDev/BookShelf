@@ -10,11 +10,11 @@ jobs:
 
     steps:
       - name: Delay for 5 minutes
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           script: |
             const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-            await delay(5 * 60 * 1000); // 5 minutes delay
+            await delay(2 * 60 * 1000); // 5 minutes delay
 
       - name: Close issue
         uses: actions/github-script@v6
@@ -28,7 +28,7 @@ jobs:
             });
 
       - name: Comment on issue
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           script: |
             github.issues.createComment({
