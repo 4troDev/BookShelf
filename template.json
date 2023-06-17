@@ -1,0 +1,9 @@
+{
+  "title": "Book Title",
+  "author": "Author Name",
+  "category": "Book Category",
+  "summary": "Brief summary or description of the book.",
+  "rating": 4,
+  "buy_link": "https://example.com/book",
+  "User": "Person who requested to add the book, to credit their contribution"
+}

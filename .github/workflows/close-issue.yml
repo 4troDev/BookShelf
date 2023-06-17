@@ -1,0 +1,39 @@
+name: Close Issue Workflow
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  close-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delay for 5 minutes
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+            await delay(5 * 60 * 1000); // 5 minutes delay
+
+      - name: Close issue
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
+
+      - name: Comment on issue
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: 'Thanks for your submission! Your book will be added shortly. Make sure to share this on your social media if you like the project. Happy coding (I mean reading)!',
+            });
