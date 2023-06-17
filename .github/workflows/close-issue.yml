@@ -17,7 +17,7 @@ jobs:
             await delay(5 * 60 * 1000); // 5 minutes delay
 
       - name: Close issue
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           script: |
             github.issues.update({
